@@ -32,9 +32,32 @@ LkAsset::register($this);
                                     . Html::endForm():'' ?>
                             </div>
                         </div>
-                        <div class="profile-work">
-                            <i class="fa fa-phone fa-2x"  aria-hidden="true"><?= Yii::$app->user->identity->dvfu_phone ?></i>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <i class="fa fa-credit-card  fa-2x"  aria-hidden="true">
+                                    Баланс
+                                </i>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="badge badge-success" style="padding: 8px;">1000Р.</span>
+                            </div>
                         </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-2">
+
+                            </div>
+                            <div class="col-md-8">
+                                <div>
+                                    <div class="bag" style="width:100px;height:100px;background-image: url('<?=Url::to(['@web/image/money-bag.png'])?>')">
+                                        <span class="badge badge-success" style="padding: 8px; margin-top: 40px;">1000Р.</span>
+                                    </div>
+                                    <?= Html::submitButton('Доставить', ['class' => 'btn btn-success','id'=>'btn','style' => 'margin: auto;']) ?>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                     <div class="col-md-8">
                         <?php foreach ($mag as $item): ?>
@@ -61,10 +84,10 @@ LkAsset::register($this);
                                             'id' => 'modal',
                                         ]);
                                         $form = ActiveForm::begin([
-                                            'action' => Url::to(['/shopcart/add', 'id' => $item->mag_id]),
+                                            'action' => Url::to(['/lk/add?'.$item->mag_id, 'id' => $item->mag_id]),
                                             'options' => ['class'=>'form-row align-items-center','id'=>'form_tel'],
                                             'fieldConfig' => [
-                                                'template' => "\n{beginWrapper}\n{input}\n{hint}\n{endWrapper}\n<br>",
+                                                'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
                                                 'horizontalCssClasses' => [
                                                     'label' => 'col-sm-4',
                                                     'offset' => 'offset-sm-2',
@@ -75,11 +98,12 @@ LkAsset::register($this);
                                             ],
                                         ]);
                                          ?>
-                                        <?= $form->field($model, 'zakaz_cena',['options' => ['class' => 'col-md-12']])->label('zakaz_cena'); ?>
+                                        <?= $form->field($model, 'zakaz_cena',['options' => ['class' => 'col-md-12']]); ?>
 
-                                        <?= $form->field($model, 'zakaz_chek',['options' => ['class' => 'col-md-12']])->label(false); ?>
+                                        <?= $form->field($model, 'zakaz_chek',['options' => ['class' => 'col-md-12']]); ?>
 
-                                            <?= $form->field($model, 'zakaz_opis',['options' => ['class' => 'col-md-12']])->label(false); ?>
+                                            <?= $form->field($model, 'zakaz_opis',['options' => ['class' => 'col-md-12']]); ?>
+                                        <?= Html::submitButton('Отправить', ['class' => 'btn btn-danger','id'=>'btn','style' => 'margin-top: 10px;']) ?>
                                     <?php
                                         ActiveForm::end();
                                         Modal::end();?>
