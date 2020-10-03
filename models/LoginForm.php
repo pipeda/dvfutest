@@ -34,7 +34,14 @@ class LoginForm extends Model
             ['password', 'validatePassword'],
         ];
     }
-
+    public function attributeLabels()
+    {
+        return [
+            'usernamet' => 'Имя',
+            'password' => 'Пароль',
+            'rememberMe' => 'Запомнить',
+        ];
+    }
     /**
      * Validates the password.
      * This method serves as the inline validation for password.
@@ -56,7 +63,9 @@ class LoginForm extends Model
     /**
      * Logs in a user using the provided username and password.
      * @return bool whether the user is logged in successfully
+     *
      */
+
     public function login()
     {
         if ($this->validate()) {

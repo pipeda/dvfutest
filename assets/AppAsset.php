@@ -17,15 +17,43 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
-    public $baseUrl = '@web';
+
+    public $sourcePath = '@app/media/gl2';
     public $css = [
-        'css/site.css',
+        //'css/tilda-animation-1.0.min.css',
+        //'css/tilda-blocks-2.12.css',
+         //'css/tilda-grid-3.0.min.css',
+         //'css/tilda-menusub-1.0.min.css',
+        'css/tilda-animation-1.0.min.css',
+        'css/tilda-blocks-2.12.css',
+        //'css/tilda-grid-3.0.min.css',
+        'css/tilda-menusub-1.0.min.css',
+        'css/tilda-slds-1.4.min.css',
+        'css/tilda-zoom-2.0.min.css',
     ];
     public $js = [
+        //'js/lazyload-1.3.min.js',
+        //'js/tilda-animation-1.0.min.js',
+        //'js/tilda-blocks-2.7.js',
+       // 'js/tilda-menusub-1.0.min.js',
+        //'js/tilda-scripts-2.8.min.js',
+        //'js/tildasimplestat-0.1.min.js',
+        ['js/jquery-1.10.2.min.js', 'position' => \yii\web\View::POS_HEAD],
+        'js/hammer.min.js',
+        'js/lazyload-1.3.min.js',
+        'js/tilda-animation-1.0.min.js',
+        'js/tilda-animation-sbs-1.0.min.js',
+        ['js/tilda-menusub-1.0.min.js', 'position' => \yii\web\View::POS_HEAD],
+        'js/tilda-scripts-2.8.min.js',
+        'js/tilda-slds-1.4.min.js',
+        'js/tilda-zoom-2.0.min.js',
+        'js/tildastat-0.2.min.js',
+
+
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap4\BootstrapAsset',
+        'yii\bootstrap4\BootstrapPluginAsset',
     ];
 }
